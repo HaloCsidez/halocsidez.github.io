@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://halocsidez.github.io</id>
     <title>Gridea</title>
-    <updated>2021-12-14T05:55:30.529Z</updated>
+    <updated>2021-12-14T06:10:39.706Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://halocsidez.github.io"/>
     <link rel="self" href="https://halocsidez.github.io/atom.xml"/>
@@ -10,6 +10,97 @@
     <logo>https://halocsidez.github.io/images/avatar.png</logo>
     <icon>https://halocsidez.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[ORACLE数据库定时备份脚本]]></title>
+        <id>https://halocsidez.github.io/post/oracle-shu-ju-ku-ding-shi-bei-fen-jiao-ben/</id>
+        <link href="https://halocsidez.github.io/post/oracle-shu-ju-ku-ding-shi-bei-fen-jiao-ben/">
+        </link>
+        <updated>2021-12-14T06:00:41.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="数据库自动备份说明">数据库自动备份说明</h2>
+<p>备份周期：每天凌晨2:00开始自动备份<br>
+备份文件保留天数：7天，自动删除7天前的备份文件。</p>
+<h2 id="实施步骤">实施步骤</h2>
+<ol>
+<li>创建数据库备份目录：</li>
+</ol>
+<pre><code class="language-shell">su – oracle
+cd $ORACLE_HOME
+mkdir databak
+</code></pre>
+<ol start="2">
+<li>上传数据库备份脚本：<br>
+<code>cd $ORACLE_HOME</code>把附件中的autobakup.sh文件上传到此目录中,并赋予执行权限<code>chmod 755 autobakup.sh</code></li>
+<li>把自动备份脚本加入到定时任务中：</li>
+</ol>
+<pre><code class="language-shell">su – oracle
+crontab –e
+</code></pre>
+<p>在后面添加 <code>0 2 * * * $ORACLE_HOME/autobakup.sh &gt;backuplog.txt 2&gt;&amp;1</code> 保存退出即可。</p>
+<h2 id="数据库还原">数据库还原</h2>
+<ol>
+<li>解压数据库压缩件：</li>
+</ol>
+<pre><code class="language-shell">tar –zxvf 数据库备份文件.tar.gz
+</code></pre>
+<ol start="2">
+<li>数据导入：</li>
+</ol>
+<pre><code class="language-sql">su – oracle
+imp u3cuser/u3cuser123 file=数据库备份文件.dmp log=u3cuser.log fromuser=u3cuser
+imp hzmetro_yw/hzmetro_yw file=数据库备份文件.dmp  log=hzmetro_yw.log fromuser=hzmetro_yw
+imp hzmetro_zh/hzmetro_zh file=数据库备份文件.dmp log=hzmetro_zh.log fromuser=hzmetro_zh
+</code></pre>
+<h2 id="实现代码">实现代码</h2>
+<p><strong>#autobackup.sh</strong></p>
+<pre><code class="language-shell">#!/bin/bash
+#自动备份数据库脚本，删除7天前的数据文件
+#export ORACLE_BASE=/u01/app/oracle
+#export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1
+#export PATH=$ORACLE_HOME/bin:$PATH:$HOME/bin
+#oracle字符集
+#export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK
+
+#source /home/oracle/.bash_profile
+
+
+#备份目录
+BAKDIR=$ORACLE_HOME/databak
+
+
+#进入备份目录
+cd $BAKDIR
+
+#开始备份
+echo 'oracle backup...'
+#获取当前时间，格式：201701010000
+DATE=$(date +%Y%m%d%H%M)
+BAKDATA1=u3cuser-$DATE.dmp
+BAKLOG1=u3cuser-$DATE.log
+BAKDATA2=hzmetroyw-$DATE.dmp
+BAKLOG2=hzmetroyw-$DATE.log
+BAKDATA3=hzmetrozh-$DATE.dmp
+BAKLOG3=hzmetrozh-$DATE.log
+BAKDATA=databack-$DATE.tar.gz
+
+exp u3cuser/u3cuser123 file=$BAKDIR/$BAKDATA1  log=$BAKDIR/$BAKLOG1  owner=u3cuser
+exp hzmetro_yw/hzmetro_yw file=$BAKDIR/$BAKDATA2  log=$BAKDIR/$BAKLOG2  owner=hzmetro_yw
+exp hzmetro_zh/hzmetro_zh file=$BAKDIR/$BAKDATA3  log=$BAKDIR/$BAKLOG3  owner=hzmetro_zh
+echo 'oracle backup successfully.'
+
+#压缩数据库文件
+#cd $BAKDIR
+tar -zcf $BAKDATA $BAKDATA1 $BAKDATA2 $BAKDATA3
+rm -rf $BAKDATA1 $BAKDATA2 $BAKDATA3
+
+#删除7天前的历史备份
+echo 'remove history ...'
+find $BAKDIR/ -type f -name &quot;*.tar.gz&quot; -mtime +7 -exec rm -f {} \;
+find $BAKDIR/ -type f -name &quot;*.log&quot; -mtime +7 -exec rm -f {} \;
+echo 'remove history successfully.'
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Ubuntu安装]]></title>
         <id>https://halocsidez.github.io/post/ubuntu-an-zhuang/</id>
