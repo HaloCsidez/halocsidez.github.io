@@ -1,0 +1,286 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ubuntu安装 | Gridea</title>
+<link rel="shortcut icon" href="https://halocsidez.github.io/favicon.ico?v=1639461253098">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://halocsidez.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Ubuntu安装 | Gridea - Atom Feed" href="https://halocsidez.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="相关信息描述
+
+联想R9000p 3060版本
+网卡IntelA210
+Ubuntu20版本
+
+系统问题
+盒盖不休眠
+sudo vim /etc/systemd/logind.conf
+#HandleLidSwitch=suspend
+Ha..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://halocsidez.github.io">
+  <img class="avatar" src="https://halocsidez.github.io/images/avatar.png?v=1639461253098" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Ubuntu安装
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-12-14
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="相关信息描述">相关信息描述</h2>
+<ul>
+<li>联想R9000p 3060版本</li>
+<li>网卡IntelA210</li>
+<li>Ubuntu20版本</li>
+</ul>
+<h2 id="系统问题">系统问题</h2>
+<h3 id="盒盖不休眠">盒盖不休眠</h3>
+<pre><code>sudo vim /etc/systemd/logind.conf
+#HandleLidSwitch=suspend
+HandleLidSwitch=ignore
+sudo systemctl restart systemd-logind
+</code></pre>
+<h3 id="网卡无法显示">网卡无法显示</h3>
+<p>sudo mv /usr/lib/firmware/iwlwifi-ty-a0-gf-a0.pnvm  /usr/lib/firmware/iwlwifi-ty-a0-gf-a0.bak</p>
+<h3 id="亮度调节">亮度调节</h3>
+<p>sudo gedit /etc/default/grub</p>
+<p>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet nvidia.NVreg_RegistryDwords=EnableBrightnessControl=1&quot;</p>
+<p>sudo update-grub</p>
+<h3 id="休眠问题">休眠问题</h3>
+<p>Then edit <code>/etc/default/grub</code> and add the line: <code>GRUB_CMDLINE_LINUX=&quot;nouveau.blacklist=1&quot;</code></p>
+<h3 id="卸载安装文件">卸载安装文件</h3>
+<p>1.sudo apt-get remove 软件名</p>
+<p>卸载删除软件，但是配置文件什么的都还在</p>
+<p>2.sudo apt-get --purge remove 软件名</p>
+<p>删除软件、及其配置文件，但是原来安装该软件的依赖包都还在</p>
+<ol start="3">
+<li>软件名</li>
+</ol>
+<p>删除软件及其配置文件、相关依赖包等，属于比较干净的卸载。</p>
+<p>dpkg -l | grep postgresql*</p>
+<h3 id="桌面缩放调整">桌面缩放调整</h3>
+<pre><code class="language-shell">cd /usr/share/glib-2.0/schemas/
+
+sudo gedit org.gnome.desktop.interface.gschema.xml
+# text-scaling-factor 修改default为1.25
+
+sudo gedit com.ubuntu.user-interface.gschema.xml
+# text-scaling-factor 1.25
+
+# 编译schema，重启生效
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+</code></pre>
+<h2 id="软件问题">软件问题</h2>
+<h3 id="网易云字体调整">网易云字体调整</h3>
+<p>网易云字体太小<br>
+sudo vim /opt/netease/netease-cloud-music/netease-cloud-music.bash<br>
+将最后一行改为<br>
+exec &quot;${HERE}&quot;/netease-cloud-music -force-device-scale-factor=2 $@</p>
+<h3 id="snap和apt">snap和apt</h3>
+<p>snap是新的包管理工具，能够直接安装和更新。</p>
+<p>snap help</p>
+<h3 id="conda安装">conda安装</h3>
+<p>从官网下载conda</p>
+<p>目录安装在/usr/local/anaconda3/下面，最后在当前用户目录下的~/.bashrc中添加环境变量，参考root目录下的环境变量</p>
+<h3 id="删除dock中的图标">删除dock中的图标</h3>
+<p>It seems that you can't remove apps from the Dash, however you can manage your launchers (*.desktop files) in one of the following directories:</p>
+<ul>
+<li><code>/usr/share/applications</code></li>
+<li><code>/usr/local/share/applications</code></li>
+<li><code>~/.local/share/applications</code></li>
+</ul>
+<p>If your launcher file is in any of the first two directories, you will require root permissions to remove it.</p>
+<h2 id="vscode">VSCode</h2>
+<p>python 调试</p>
+<ol>
+<li>首先，需要Python的依赖包<strong>debugpy</strong>，在工作环境下下载该包：</li>
+</ol>
+<pre><code>pip install debugpy
+</code></pre>
+<ol start="2">
+<li>修改launch.json</li>
+</ol>
+<pre><code>{
+	&quot;version&quot;: &quot;0.2.0&quot;,
+	&quot;configurations&quot;: [
+		{
+			&quot;name&quot;: &quot;Python: Attach&quot;,
+			&quot;type&quot;: &quot;python&quot;,
+			&quot;request&quot;: &quot;attach&quot;,
+			&quot;connect&quot;: {
+				&quot;host&quot;: &quot;localhost&quot;,
+				&quot;port&quot;: xxxx
+			}
+		}
+	]
+}
+</code></pre>
+<ol start="3">
+<li>运行以下命令</li>
+</ol>
+<pre><code>python -m debugpy --listen xxxx --wait-for-client xxx.py -arg1 ARG1 -arg2 ARG2
+</code></pre>
+<p>注意，这里的命令使用了debugpy包，且设置了一个必要的参数--listen，这里监听的端口xxxx由用户指定，和launch.json中设置的端口号一致。</p>
+<p>键入命令后正常执行，接下来在程序中想要查看之处设置好断点，按F5键，进入普通的debug流程即可。之后的步骤与不带参数的程序调试一致。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF%E6%8F%8F%E8%BF%B0">相关信息描述</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E9%97%AE%E9%A2%98">系统问题</a>
+<ul>
+<li><a href="#%E7%9B%92%E7%9B%96%E4%B8%8D%E4%BC%91%E7%9C%A0">盒盖不休眠</a></li>
+<li><a href="#%E7%BD%91%E5%8D%A1%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA">网卡无法显示</a></li>
+<li><a href="#%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82">亮度调节</a></li>
+<li><a href="#%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98">休眠问题</a></li>
+<li><a href="#%E5%8D%B8%E8%BD%BD%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6">卸载安装文件</a></li>
+<li><a href="#%E6%A1%8C%E9%9D%A2%E7%BC%A9%E6%94%BE%E8%B0%83%E6%95%B4">桌面缩放调整</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BD%AF%E4%BB%B6%E9%97%AE%E9%A2%98">软件问题</a>
+<ul>
+<li><a href="#%E7%BD%91%E6%98%93%E4%BA%91%E5%AD%97%E4%BD%93%E8%B0%83%E6%95%B4">网易云字体调整</a></li>
+<li><a href="#snap%E5%92%8Capt">snap和apt</a></li>
+<li><a href="#conda%E5%AE%89%E8%A3%85">conda安装</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4dock%E4%B8%AD%E7%9A%84%E5%9B%BE%E6%A0%87">删除dock中的图标</a></li>
+</ul>
+</li>
+<li><a href="#vscode">VSCode</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://halocsidez.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
