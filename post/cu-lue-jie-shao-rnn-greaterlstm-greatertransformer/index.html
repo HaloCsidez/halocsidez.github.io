@@ -1,22 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://halocsidez.github.io</id>
-    <title>Gridea</title>
-    <updated>2021-12-17T05:11:19.245Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://halocsidez.github.io"/>
-    <link rel="self" href="https://halocsidez.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://halocsidez.github.io/images/avatar.png</logo>
-    <icon>https://halocsidez.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[粗略介绍RNN->LSTM->Transformer]]></title>
-        <id>https://halocsidez.github.io/post/cu-lue-jie-shao-rnn-greaterlstm-greatertransformer/</id>
-        <link href="https://halocsidez.github.io/post/cu-lue-jie-shao-rnn-greaterlstm-greatertransformer/">
-        </link>
-        <updated>2021-12-17T05:10:45.000Z</updated>
-        <content type="html"><![CDATA[<p>神经网络主要包含两大类型</p>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>粗略介绍RNN-&gt;LSTM-&gt;Transformer | Gridea</title>
+<link rel="shortcut icon" href="https://halocsidez.github.io/favicon.ico?v=1639717872960">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://halocsidez.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="粗略介绍RNN-&gt;LSTM-&gt;Transformer | Gridea - Atom Feed" href="https://halocsidez.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="神经网络主要包含两大类型
+
+卷积神经网络CNN（又称为前馈神经网络）
+循环神经网络RNN，RNN衍生出以下等类型神经网络
+
+长短期记忆LSTM
+门控循环单元GRU
+
+
+
+尽管神经网络主要用于监督学习，但也有一些为无监督学习设计的变体
+
+自动..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://halocsidez.github.io">
+  <img class="avatar" src="https://halocsidez.github.io/images/avatar.png?v=1639717872960" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              粗略介绍RNN-&gt;LSTM-&gt;Transformer
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-12-17
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>神经网络主要包含两大类型</p>
 <ul>
 <li>卷积神经网络CNN（又称为前馈神经网络）</li>
 <li>循环神经网络RNN，RNN衍生出以下等类型神经网络
@@ -120,200 +204,88 @@ S_t = f(U \times X_t + W \times S_{t-1})
 </a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/30844905">一文搞懂RNN（循环神经网络）基础篇</a></p>
 <p>(!!详细)<a href="https://www.jianshu.com/p/9b87b945151e"><strong>Transformer 模型详解</strong></a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ORACLE数据库定时备份脚本]]></title>
-        <id>https://halocsidez.github.io/post/oracle-shu-ju-ku-ding-shi-bei-fen-jiao-ben/</id>
-        <link href="https://halocsidez.github.io/post/oracle-shu-ju-ku-ding-shi-bei-fen-jiao-ben/">
-        </link>
-        <updated>2021-12-14T06:00:41.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="数据库自动备份说明">数据库自动备份说明</h2>
-<p>备份周期：每天凌晨2:00开始自动备份<br>
-备份文件保留天数：7天，自动删除7天前的备份文件。</p>
-<h2 id="实施步骤">实施步骤</h2>
-<ol>
-<li>创建数据库备份目录：</li>
-</ol>
-<pre><code class="language-shell">su – oracle
-cd $ORACLE_HOME
-mkdir databak
-</code></pre>
-<ol start="2">
-<li>上传数据库备份脚本：<br>
-<code>cd $ORACLE_HOME</code>把附件中的autobakup.sh文件上传到此目录中,并赋予执行权限<code>chmod 755 autobakup.sh</code></li>
-<li>把自动备份脚本加入到定时任务中：</li>
-</ol>
-<pre><code class="language-shell">su – oracle
-crontab –e
-</code></pre>
-<p>在后面添加 <code>0 2 * * * $ORACLE_HOME/autobakup.sh &gt;backuplog.txt 2&gt;&amp;1</code> 保存退出即可。</p>
-<h2 id="数据库还原">数据库还原</h2>
-<ol>
-<li>解压数据库压缩件：</li>
-</ol>
-<pre><code class="language-shell">tar –zxvf 数据库备份文件.tar.gz
-</code></pre>
-<ol start="2">
-<li>数据导入：</li>
-</ol>
-<pre><code class="language-sql">su – oracle
-imp u3cuser/u3cuser123 file=数据库备份文件.dmp log=u3cuser.log fromuser=u3cuser
-imp hzmetro_yw/hzmetro_yw file=数据库备份文件.dmp  log=hzmetro_yw.log fromuser=hzmetro_yw
-imp hzmetro_zh/hzmetro_zh file=数据库备份文件.dmp log=hzmetro_zh.log fromuser=hzmetro_zh
-</code></pre>
-<h2 id="实现代码">实现代码</h2>
-<p><strong>#autobackup.sh</strong></p>
-<pre><code class="language-shell">#!/bin/bash
-#自动备份数据库脚本，删除7天前的数据文件
-#export ORACLE_BASE=/u01/app/oracle
-#export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1
-#export PATH=$ORACLE_HOME/bin:$PATH:$HOME/bin
-#oracle字符集
-#export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK
 
-#source /home/oracle/.bash_profile
-
-
-#备份目录
-BAKDIR=$ORACLE_HOME/databak
-
-
-#进入备份目录
-cd $BAKDIR
-
-#开始备份
-echo 'oracle backup...'
-#获取当前时间，格式：201701010000
-DATE=$(date +%Y%m%d%H%M)
-BAKDATA1=u3cuser-$DATE.dmp
-BAKLOG1=u3cuser-$DATE.log
-BAKDATA2=hzmetroyw-$DATE.dmp
-BAKLOG2=hzmetroyw-$DATE.log
-BAKDATA3=hzmetrozh-$DATE.dmp
-BAKLOG3=hzmetrozh-$DATE.log
-BAKDATA=databack-$DATE.tar.gz
-
-exp u3cuser/u3cuser123 file=$BAKDIR/$BAKDATA1  log=$BAKDIR/$BAKLOG1  owner=u3cuser
-exp hzmetro_yw/hzmetro_yw file=$BAKDIR/$BAKDATA2  log=$BAKDIR/$BAKLOG2  owner=hzmetro_yw
-exp hzmetro_zh/hzmetro_zh file=$BAKDIR/$BAKDATA3  log=$BAKDIR/$BAKLOG3  owner=hzmetro_zh
-echo 'oracle backup successfully.'
-
-#压缩数据库文件
-#cd $BAKDIR
-tar -zcf $BAKDATA $BAKDATA1 $BAKDATA2 $BAKDATA3
-rm -rf $BAKDATA1 $BAKDATA2 $BAKDATA3
-
-#删除7天前的历史备份
-echo 'remove history ...'
-find $BAKDIR/ -type f -name &quot;*.tar.gz&quot; -mtime +7 -exec rm -f {} \;
-find $BAKDIR/ -type f -name &quot;*.log&quot; -mtime +7 -exec rm -f {} \;
-echo 'remove history successfully.'
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Ubuntu安装]]></title>
-        <id>https://halocsidez.github.io/post/ubuntu-an-zhuang/</id>
-        <link href="https://halocsidez.github.io/post/ubuntu-an-zhuang/">
-        </link>
-        <updated>2021-12-14T05:52:07.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="相关信息描述">相关信息描述</h2>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
 <ul>
-<li>联想R9000p 3060版本</li>
-<li>网卡IntelA210</li>
-<li>Ubuntu20版本</li>
+<li><a href="#rnn%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">RNN(循环神经网络)</a></li>
+<li><a href="#lstm">LSTM</a></li>
+<li><a href="#seq2seq">Seq2Seq</a></li>
+<li><a href="#transformer">Transformer</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
 </ul>
-<h2 id="系统问题">系统问题</h2>
-<h3 id="盒盖不休眠">盒盖不休眠</h3>
-<pre><code>sudo vim /etc/systemd/logind.conf
-#HandleLidSwitch=suspend
-HandleLidSwitch=ignore
-sudo systemctl restart systemd-logind
-</code></pre>
-<h3 id="网卡无法显示">网卡无法显示</h3>
-<p>sudo mv /usr/lib/firmware/iwlwifi-ty-a0-gf-a0.pnvm  /usr/lib/firmware/iwlwifi-ty-a0-gf-a0.bak</p>
-<h3 id="亮度调节">亮度调节</h3>
-<p>sudo gedit /etc/default/grub</p>
-<p>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet nvidia.NVreg_RegistryDwords=EnableBrightnessControl=1&quot;</p>
-<p>sudo update-grub</p>
-<h3 id="休眠问题">休眠问题</h3>
-<p>Then edit <code>/etc/default/grub</code> and add the line: <code>GRUB_CMDLINE_LINUX=&quot;nouveau.blacklist=1&quot;</code></p>
-<h3 id="卸载安装文件">卸载安装文件</h3>
-<p>1.sudo apt-get remove 软件名</p>
-<p>卸载删除软件，但是配置文件什么的都还在</p>
-<p>2.sudo apt-get --purge remove 软件名</p>
-<p>删除软件、及其配置文件，但是原来安装该软件的依赖包都还在</p>
-<ol start="3">
-<li>软件名</li>
-</ol>
-<p>删除软件及其配置文件、相关依赖包等，属于比较干净的卸载。</p>
-<p>dpkg -l | grep postgresql*</p>
-<h3 id="桌面缩放调整">桌面缩放调整</h3>
-<pre><code class="language-shell">cd /usr/share/glib-2.0/schemas/
-
-sudo gedit org.gnome.desktop.interface.gschema.xml
-# text-scaling-factor 修改default为1.25
-
-sudo gedit com.ubuntu.user-interface.gschema.xml
-# text-scaling-factor 1.25
-
-# 编译schema，重启生效
-sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
-</code></pre>
-<h2 id="软件问题">软件问题</h2>
-<h3 id="网易云字体调整">网易云字体调整</h3>
-<p>网易云字体太小<br>
-sudo vim /opt/netease/netease-cloud-music/netease-cloud-music.bash<br>
-将最后一行改为<br>
-exec &quot;${HERE}&quot;/netease-cloud-music -force-device-scale-factor=2 $@</p>
-<h3 id="snap和apt">snap和apt</h3>
-<p>snap是新的包管理工具，能够直接安装和更新。</p>
-<p>snap help</p>
-<h3 id="conda安装">conda安装</h3>
-<p>从官网下载conda</p>
-<p>目录安装在/usr/local/anaconda3/下面，最后在当前用户目录下的~/.bashrc中添加环境变量，参考root目录下的环境变量</p>
-<h3 id="删除dock中的图标">删除dock中的图标</h3>
-<p>It seems that you can't remove apps from the Dash, however you can manage your launchers (*.desktop files) in one of the following directories:</p>
-<ul>
-<li><code>/usr/share/applications</code></li>
-<li><code>/usr/local/share/applications</code></li>
-<li><code>~/.local/share/applications</code></li>
+</li>
 </ul>
-<p>If your launcher file is in any of the first two directories, you will require root permissions to remove it.</p>
-<h2 id="vscode">VSCode</h2>
-<p>python 调试</p>
-<ol>
-<li>首先，需要Python的依赖包<strong>debugpy</strong>，在工作环境下下载该包：</li>
-</ol>
-<pre><code>pip install debugpy
-</code></pre>
-<ol start="2">
-<li>修改launch.json</li>
-</ol>
-<pre><code>{
-	&quot;version&quot;: &quot;0.2.0&quot;,
-	&quot;configurations&quot;: [
-		{
-			&quot;name&quot;: &quot;Python: Attach&quot;,
-			&quot;type&quot;: &quot;python&quot;,
-			&quot;request&quot;: &quot;attach&quot;,
-			&quot;connect&quot;: {
-				&quot;host&quot;: &quot;localhost&quot;,
-				&quot;port&quot;: xxxx
-			}
-		}
-	]
-}
-</code></pre>
-<ol start="3">
-<li>运行以下命令</li>
-</ol>
-<pre><code>python -m debugpy --listen xxxx --wait-for-client xxx.py -arg1 ARG1 -arg2 ARG2
-</code></pre>
-<p>注意，这里的命令使用了debugpy包，且设置了一个必要的参数--listen，这里监听的端口xxxx由用户指定，和launch.json中设置的端口号一致。</p>
-<p>键入命令后正常执行，接下来在程序中想要查看之处设置好断点，按F5键，进入普通的debug流程即可。之后的步骤与不带参数的程序调试一致。</p>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://halocsidez.github.io/post/oracle-shu-ju-ku-ding-shi-bei-fen-jiao-ben/">
+              <h3 class="post-title">
+                ORACLE数据库定时备份脚本
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <a href="https://ythzxfw.miit.gov.cn/index" target="_blank">浙ICP备20000850号-1</a>
+  <a class="rss" href="https://halocsidez.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
